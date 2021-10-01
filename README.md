@@ -14,16 +14,16 @@ TextChess on Microservice architecture
 
 ### Client
 
-**CLIENT/code/config.js**
+_CLIENT/code/config.js_
 
-const config = {
-userMoveHandlerURL: "http://localhost:3000/",
-engineMoveHandlerURL: "http://localhost:7000/",
-};
+    const config = {
+    userMoveHandlerURL: "http://localhost:3000/",
+    engineMoveHandlerURL: "http://localhost:7000/",
+    };
 
 ### EngineMoveHandler
 
-**EngineMoveHandler/CONFIG/config.js**
+_EngineMoveHandler/CONFIG/config.js_
 
 config = {};
 config.expressPort = 7000;
@@ -33,7 +33,7 @@ module.exports.config = config;
 
 ### UserMoveHandler
 
-**UserMoveHandler/CONFIG/config.js**
+_UserMoveHandler/CONFIG/config.js_
 
 config = {};
 config.expressPort = 3000;
@@ -43,7 +43,7 @@ module.exports.config = config;
 
 ### ENGINE
 
-**ENGINE/CONFIG/config.js**
+_ENGINE/CONFIG/config.js_
 
 config = {};
 config.rabbitMqServer = "amqp://localhost";
