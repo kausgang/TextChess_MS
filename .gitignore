@@ -89,3 +89,7 @@ typings/
 
 # VSCode config
 .vscode
+
+# certificates
+*.key
+*.crt
