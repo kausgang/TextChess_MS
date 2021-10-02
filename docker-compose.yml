@@ -1,0 +1,7 @@
+# check for version information in documentation https://docs.docker.com/compose/compose-file/compose-file-v3/
+version: "3.8"
+services:
+  client:
+    build: "./CLIENT/"
+    ports:
+      - "443:443"
