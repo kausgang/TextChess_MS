@@ -93,40 +93,5 @@ TextChess on Microservice architecture
 
 ## 3. Deploy Client on NGINX web server (Docker Container)
 
-1. [Create self-sign certificates](<#create-self-signed-certificate-for-nginx-web-server-(client)>)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Pellentesque ut urna massa. Aliquam ut nisi maximus, consectetur velit quis, pharetra nulla. Donec aliquet,
-quam a tristique vulputate, purus diam convallis ante, id consectetur lectus velit nec tellus. Pellentesque
-habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer fermentum
-scelerisque diam, sit amet convallis erat vestibulum eget. Donec euismod eget purus ut euismod. Vivamus
-ullamcorper fringilla tempus. Morbi at elementum nisi, nec eleifend turpis. Integer eget volutpat justo, sit
-amet scelerisque orci. Proin consectetur in leo ac vestibulum. Sed diam urna, varius non lacus ut, blandit
-imperdiet leo. Vestibulum lobortis mattis venenatis.
-
-Praesent vestibulum metus sed dapibus gravida. Nunc interdum tortor a diam pellentesque suscipit. Pellentesque
-placerat massa arcu. Sed non viverra risus, et venenatis leo. Vivamus consectetur odio non magna luctus, at
-sollicitudin urna placerat. Fusce mattis, enim quis lacinia volutpat, leo justo tincidunt tortor, ac tincidunt
-elit ligula a libero. Proin euismod consequat massa ut facilisis.
-
-Pellentesque laoreet, est ut maximus dignissim, augue orci suscipit magna, vel facilisis arcu enim non justo.
-Nullam semper dictum est, fermentum euismod nisi sagittis vel. Vestibulum ante ipsum primis in faucibus orci
-luctus et ultrices posuere cubilia curae; Vestibulum at tincidunt leo, in bibendum urna. Quisque egestas nisi
-at purus sagittis venenatis. Vivamus quis commodo mi, et sodales justo. Praesent eros ante, commodo eu
-tincidunt quis, tempor non purus. Aliquam erat volutpat. Suspendisse accumsan eu magna et luctus. Curabitur et
-lobortis ante, quis tincidunt urna. Proin ligula justo, eleifend quis odio ac, elementum semper quam.
-Curabitur dignissim sapien risus, sit amet sollicitudin urna auctor vitae. Maecenas suscipit elit cursus,
-laoreet ligula ut, luctus lectus. Quisque ac risus at eros aliquam fringilla ut sed neque. Integer luctus et
-metus at rutrum.
-
-Fusce at massa purus. Aliquam viverra quam sed elementum consequat. Aenean augue sem, efficitur eget magna nec, porta accumsan tortor. Donec sollicitudin purus eu nibh imperdiet porttitor. Morbi semper interdum dui, et ultrices nulla porttitor sit amet. Vivamus quis ante urna. Curabitur at orci lorem. Morbi vehicula velit a placerat dapibus. Duis faucibus augue eget turpis malesuada rhoncus.
-
-Praesent elementum, sapien sed mollis dignissim, ipsum neque fermentum lacus, at aliquam lectus turpis sed magna. Vestibulum in rutrum ligula, in imperdiet massa. Nunc et imperdiet neque. Nunc aliquet diam eget est sodales fringilla. Pellentesque ut nibh metus. Etiam luctus mi at massa bibendum, ut pharetra metus fringilla. Proin sed maximus leo. Cras semper ac dolor ac aliquet. Morbi id nibh maximus enim imperdiet tristique at ac elit. Nam fermentum sapien id ligula convallis, vel rhoncus diam viverra. Phasellus accumsan ligula accumsan imperdiet faucibus. Quisque vehicula mi non iaculis accumsan. Maecenas semper condimentum interdum. Cras vel felis rutrum, tempor velit eu, ornare tellus.
-
-## Supporting scripts
-
-### Create self-signed certificate for NGINX web server (CLIENT)
-
-The certificates (nginx.key,nginx.crt) will be placed inside CLIENT/cert. This requires **openssl**
-
-    run create-cert-nginx.sh
+1. HTTPS connection is required to avoid CSRF error.
+2. Build docker image from Dockerfile provided inside CLIENT directory - it takes care of the self-sign certificate.
