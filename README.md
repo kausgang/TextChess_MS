@@ -9,7 +9,7 @@ TextChess on Microservice architecture
 1.  You need have rabbitmq server running on your local machine. This application has been tested on Node version v14.15.4.
 2.  UserMoveHandler runs on port 3000 by default.
 3.  EngineMoveHandler runs on port 7000 by default.
-4.  make sure config files has values as given below -
+4.  make sure config files have values as given below -
 5.  Run _start_localhost.bat_
 6.  It will open the application in google Chrome. If you don't have Chrome, update _start_localhost.bat_ and change _chrome_ to firefox or whatever you have.
 

@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.21.3
 
 # copy the ssl_config file from cert_conf folder
 COPY cert_conf/ssl_config.conf /tmp
