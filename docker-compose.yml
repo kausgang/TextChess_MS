@@ -1,23 +1,27 @@
 # check for version information in documentation https://docs.docker.com/compose/compose-file/compose-file-v3/
 version: "3.3"
 services:
-  client:
-    build: "./CLIENT/"
-    ports:
-      - "443:443"
   usermovehandler:
     build: "./UserMoveHandler"
     ports:
       - "3000:3000"
+
   enginemovehandler:
     build: "./EngineMoveHandler"
     ports:
       - "7000:7000"
+
   engine:
     build: "./ENGINE"
+
   rabbitmq:
     image: "rabbitmq:3"
-    ports:
-      - "5672:5672"
-      - 15672:15672
+    expose:
+      - "5672"
+      - "15672"
     # hostname: "my-rabbit"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
