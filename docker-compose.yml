@@ -15,7 +15,7 @@ services:
     build: "./ENGINE"
 
   rabbitmq:
-    image: "rabbitmq:3"
+    image: "rabbitmq:3-management"
     expose:
       - "5672"
       - "15672"

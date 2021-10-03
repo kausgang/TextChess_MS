@@ -56,8 +56,8 @@ TextChess on Microservice architecture
 
 1.  You can run RabbitMq as a docker image and skip RabbitMQ installation on local machine.
 
-        docker pull rabbitmq:3
-        docker run -p 5672:5672 -d --hostname my-rabbit --name some-rabbit rabbitmq:3
+        docker pull rabbitmq:3-management
+        docker run -p 5672:5672 -p 15672:15672 -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
 
 2.  Update the config files below. For example, if docker is running on 192.168.1.214 on port 5672 (from above docker run command) the config file will have _config.rabbitMqServer = "amqp://192.168.1.214:5672";_
 
