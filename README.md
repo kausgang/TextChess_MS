@@ -91,7 +91,7 @@ TextChess on Microservice architecture
         config.senderQueueName = "engine-user";
         module.exports.config = config;
 
-## 3. Run RabbitMQ/UserMoveHandler/EngineMoveHandler/Engine as docker container
+## 3. RabbitMQ, UserMoveHandler, EngineMoveHandler, Engine as docker container
 
 ### Docker container startup order
 
@@ -127,7 +127,7 @@ Run Client from local machine. Make sure the CLIENT/code/config.js has these val
         engineMoveHandlerURL: "http://<dockerhost>:7000/",
     };
 
-## 3. Deploy Client on NGINX web server (Docker Container)
+## IF - Deploying Client on NGINX web server (Docker Container)
 
 If you are containerising CLIENT microservice, consoder these
 
