@@ -26,7 +26,7 @@ TextChess on Microservice architecture
 
     _EngineMoveHandler/CONFIG/config.js_\
     _UserMoveHandler/CONFIG/config.js_\
-    _ENGINE/CONFIG/config.js_\
+    _ENGINE/CONFIG/config.js_
 
          ***
          config.rabbitMqServer = "amqp://localhost";
@@ -43,8 +43,8 @@ TextChess on Microservice architecture
 
     #### EngineMoveHandler/UserMoveHandler/Engine
 
-    _EngineMoveHandler/CONFIG/config.js_
-    _UserMoveHandler/CONFIG/config.js_
+    _EngineMoveHandler/CONFIG/config.js_\
+    _UserMoveHandler/CONFIG/config.js_\
     _ENGINE/CONFIG/config.js_
 
          ***
@@ -68,8 +68,8 @@ TextChess on Microservice architecture
 
 #### EngineMoveHandler/UserMoveHandler/Engine
 
-    _EngineMoveHandler/CONFIG/config.js_
-    _UserMoveHandler/CONFIG/config.js_
+    _EngineMoveHandler/CONFIG/config.js_\
+    _UserMoveHandler/CONFIG/config.js_\
     _ENGINE/CONFIG/config.js_
 
          ***
