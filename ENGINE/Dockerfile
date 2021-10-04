@@ -17,7 +17,4 @@ RUN npm install
 COPY . .
 
 
-# copy wait-for-it script for docker-compose
-COPY ../INFRA/wait-for-it/* ./wait-for-it
-
 CMD [ "npm", "start" ]
