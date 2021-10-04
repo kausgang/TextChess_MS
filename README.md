@@ -22,76 +22,59 @@ TextChess on Microservice architecture
          engineMoveHandlerURL: "http://localhost:7000/",
          };
 
-    #### EngineMoveHandler
+    #### EngineMoveHandler/UserMoveHandler/Engine
 
     _EngineMoveHandler/CONFIG/config.js_
-
-         config = {};
-         config.expressPort = 7000;
-         config.rabbitMqServer = "amqp://localhost";
-         config.queueName = "engine-user";
-         module.exports.config = config;
-
-    #### UserMoveHandler
-
     _UserMoveHandler/CONFIG/config.js_
-
-         config = {};
-         config.expressPort = 3000;
-         config.rabbitMqServer = "amqp://localhost";
-         config.queueName = "user-engine";
-         module.exports.config = config;
-
-    #### ENGINE
-
     _ENGINE/CONFIG/config.js_
 
-         config = {};
+         ***
          config.rabbitMqServer = "amqp://localhost";
-         config.receiverQueueName = "user-engine";
-         config.senderQueueName = "engine-user";
-         module.exports.config = config;
+         ***
 
 ## 2. RabbitMQ Docker Image
 
-1.  Alternatively you can run RabbitMq as a docker image and skip RabbitMQ installation on local machine.
+1.  Alternatively you can run RabbitMq as a docker image and skip RabbitMQ installation on local machine. Run other microservices from local machine.
 
         docker pull rabbitmq:3-management
         docker run -p 5672:5672 -p 15672:15672 -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
 
 2.  Update the config files below. For example, if docker is running on 192.168.1.214 on port 5672 (from above docker run command) the config file will have _config.rabbitMqServer = "amqp://192.168.1.214:5672";_
 
-    #### EngineMoveHandler
+    #### EngineMoveHandler/UserMoveHandler/Engine
 
     _EngineMoveHandler/CONFIG/config.js_
-
-        config = {};
-        config.expressPort = 7000;
-        config.rabbitMqServer = "amqp://<dockerhost>";
-        config.queueName = "engine-user";
-        module.exports.config = config;
-
-    #### UserMoveHandler
-
     _UserMoveHandler/CONFIG/config.js_
-
-        config = {};
-        config.expressPort = 3000;
-        config.rabbitMqServer = "amqp://<dockerhost>";
-        config.queueName = "user-engine";
-        module.exports.config = config;
-
-    #### ENGINE
-
     _ENGINE/CONFIG/config.js_
 
-        config = {};
-        config.rabbitMqServer = "amqp://<dockerhost>";
-        config.receiverQueueName = "user-engine";
-        config.senderQueueName = "engine-user";
-        module.exports.config = config;
+         ***
+         config.rabbitMqServer = "amqp://<dockerhost>:5672";
+         ***
 
 ## 3. RabbitMQ, UserMoveHandler, EngineMoveHandler, Engine as docker container
+
+1. Client from local machine
+2. RabbitMQ, UserMoveHandler, EngineMoveHandler and Engine as docker containers
+3. Before building docker images, make sure the config values are correct
+
+#### CLIENT
+
+    _CLIENT/code/config.js_
+
+         const config = {
+        userMoveHandlerURL: "http://<dockerhost>:3000",
+        engineMoveHandlerURL: "http://<dockerhost>:7000/",
+        };
+
+#### EngineMoveHandler/UserMoveHandler/Engine
+
+    _EngineMoveHandler/CONFIG/config.js_
+    _UserMoveHandler/CONFIG/config.js_
+    _ENGINE/CONFIG/config.js_
+
+         ***
+         config.rabbitMqServer = "amqp://<dockerhost>:5672";
+         ***
 
 ### Docker container startup order
 
@@ -119,13 +102,6 @@ Hence containers can be started manually. The RabbitMQ container has to be start
     cd UserMoveHandler
     docker build -t user-move-handler .
     docker run -p 3000:3000 -d user-move-handler
-
-Run Client from local machine. Make sure the CLIENT/code/config.js has these values
-
-    const config = {
-        userMoveHandlerURL: "http://<dockerhost>:3000",
-        engineMoveHandlerURL: "http://<dockerhost>:7000/",
-    };
 
 ## IF - Deploying Client on NGINX web server (Docker Container)
 
