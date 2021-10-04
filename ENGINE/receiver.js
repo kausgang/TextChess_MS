@@ -12,7 +12,6 @@ const chess = new Chess();
 const engine = stockfish();
 
 amqp
-  // .connect("amqp://localhost")
   .connect(config.rabbitMqServer)
   .then(function (conn) {
     process.once("SIGINT", function () {
@@ -40,7 +39,10 @@ amqp
       });
     });
   })
-  .catch(console.warn);
+  // .catch(console.warn);
+  .catch((err) => {
+    console.log("RabbitMQ connection failed");
+  });
 
 function calculate(message) {
   let engine_level = message.engine_level,
