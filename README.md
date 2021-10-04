@@ -54,7 +54,7 @@ TextChess on Microservice architecture
 
 ## 2. RabbitMQ Docker Image
 
-1.  You can run RabbitMq as a docker image and skip RabbitMQ installation on local machine.
+1.  Alternatively you can run RabbitMq as a docker image and skip RabbitMQ installation on local machine.
 
         docker pull rabbitmq:3-management
         docker run -p 5672:5672 -p 15672:15672 -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
@@ -91,7 +91,46 @@ TextChess on Microservice architecture
         config.senderQueueName = "engine-user";
         module.exports.config = config;
 
+## 3. Run RabbitMQ/UserMoveHandler/EngineMoveHandler/Engine as docker container
+
+### Docker container startup order
+
+RabbitMQ container takes time to startup. Since ENGINE and EngineMoveHandler opens connection to RabbitMQ at startup, docker-compose couldnot be used to start all containers together - as this required container startuo order is not provided by docker-compose.
+
+Hence containers can be started manually. The RabbitMQ container has to be started before all other containers. The commands are given below.
+
+    docker pull rabbitmq:3-management
+    docker pull node:14.18
+
+    # Run RabbitMQ first
+    docker run -p 5672:5672 -p 15672:15672 -d --hostname my-rabbit rabbitmq:3-management
+
+    # Wait for some time for RabbitMQ to startup
+    # Start other containers
+
+    cd ENGINE
+    docker build -t engine .
+    docker run -d engine
+
+    cd EngineMoveHandler
+    docker build -t engine-move-handler .
+    docker run -p 7000:7000 -d engine-move-handler
+
+    cd UserMoveHandler
+    docker build -t user-move-handler .
+    docker run -p 3000:3000 -d user-move-handler
+
+Run Client from local machine. Make sure the CLIENT/code/config.js has these values
+
+    const config = {
+        userMoveHandlerURL: "http://<dockerhost>:3000",
+        engineMoveHandlerURL: "http://<dockerhost>:7000/",
+    };
+
 ## 3. Deploy Client on NGINX web server (Docker Container)
+
+If you are containerising CLIENT microservice, consoder these
 
 1. HTTPS connection is required to avoid CSRF error.
 2. Build docker image from Dockerfile provided inside CLIENT directory - it takes care of the self-sign certificate.
+3. If CLIENT is using SSl, EngineMoveHandler and UserMoveHandler have to use SSL too.
