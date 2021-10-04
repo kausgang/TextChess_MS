@@ -53,11 +53,11 @@ TextChess on Microservice architecture
 
 ## 3. RabbitMQ, UserMoveHandler, EngineMoveHandler, Engine as docker container
 
-1. Client from local machine
-2. RabbitMQ, UserMoveHandler, EngineMoveHandler and Engine as docker containers
-3. Before building docker images, make sure the config values are correct
+1.  Client from local machine
+2.  RabbitMQ, UserMoveHandler, EngineMoveHandler and Engine as docker containers
+3.  Before building docker images, make sure the config values are correct
 
-#### CLIENT
+    #### CLIENT
 
     _CLIENT/code/config.js_
 
@@ -66,7 +66,7 @@ TextChess on Microservice architecture
         engineMoveHandlerURL: "http://<dockerhost>:7000/",
         };
 
-#### EngineMoveHandler/UserMoveHandler/Engine
+    #### EngineMoveHandler/UserMoveHandler/Engine
 
     _EngineMoveHandler/CONFIG/config.js_\
     _UserMoveHandler/CONFIG/config.js_\
