@@ -14,4 +14,5 @@ cd ENGINE
 call npm install 
 start /max npm start
 
+cd ..
 start chrome %cd%/CLIENT/code/index.html
